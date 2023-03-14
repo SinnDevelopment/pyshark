@@ -253,7 +253,7 @@ class Capture:
         coro = self.packets_from_tshark(callback, packet_count=packet_count)
         if timeout is not None:
             coro = asyncio.wait_for(coro, timeout)
-        return self.eventloop.run_until_complete(coro)
+        return coro
 
     async def packets_from_tshark(self, packet_callback, packet_count=None, close_tshark=True):
         """
